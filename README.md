@@ -64,39 +64,30 @@ Ejemplo:
 
 ```
 .
-├── apuestas/
-│   ├── MRE.py                    # Emulador de MapReduce
-│   ├── apuestasEstandar.txt
-│   ├── apuestasPremium.txt
-│   └── apuestasPlatinium.txt
-├── punto1.py                     # Unión (Premium ∪ Estándar)
-├── punto2.py                     # Intersección (Estándar ∩ Platinium)
-├── punto3.py                     # Diferencia (Platinium − Premium)
-├── punto4.py                     # Exactamente un conjunto
+├── MRE.py                    # Emulador de MapReduce
+├── punto1.py                 # Unión (Premium ∪ Estándar)
+├── punto2.py                 # Intersección (Estándar ∩ Platinium)
+├── punto3.py                 # Diferencia (Platinium − Premium)
+├── punto4.py                 # Exactamente un conjunto
+├── apuestasEstandar.txt
+├── apuestasPremium.txt
+├── apuestasPlatinium.txt
 └── README.md
 ```
 
 ## Cómo ejecutarlo en Google Colab
 
-1. Subir `MRE.py` y los tres `.txt` a la carpeta `/content/apuestas` (al lado de `sample_data`).
-2. Como `MRE.py` está dentro de `apuestas`, agregar la carpeta al path de Python al inicio de la celda para que funcione el `import`:
-   ```python
-   import sys
-   sys.path.append("/content/apuestas")
-   from MRE import Job
-   ```
-3. Cargar el código del punto deseado en una celda y ejecutarla.
-4. Revisar el resultado en la carpeta de salida (por ejemplo `/content/salida_punto1`).
+1. Subir `MRE.py` y los tres `.txt` directamente a `/content` (al lado de la carpeta `sample_data`, sin crear ninguna carpeta).
+2. Cargar el código del punto deseado en una celda y ejecutarla.
+3. Revisar el resultado en la carpeta de salida (por ejemplo `/content/salida_punto1`).
 
 El emulador lee **carpetas**, no archivos sueltos. Por eso cada driver crea una carpeta por dataset, copia el `.txt` adentro y borra la salida anterior para poder re-ejecutar sin errores:
 
 ```python
 os.makedirs(input_est, exist_ok=True)
-shutil.copy("/content/apuestas/apuestasEstandar.txt", input_est + "/apuestasEstandar.txt")
+shutil.copy("/content/apuestasEstandar.txt", input_est + "/apuestasEstandar.txt")
 shutil.rmtree(output_dir, ignore_errors=True)
 ```
-
-> Los `shutil.copy` de cada punto deben apuntar a `/content/apuestas/...` y no a `/content/...`.
 
 ### Parámetros
 

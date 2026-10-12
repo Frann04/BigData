@@ -1,5 +1,7 @@
 # Apuestas deportivas con MapReduce
 
+Trabajo Práctico N°1 de la asignatura **Big Data**, correspondiente a la carrera **Ingeniería en Computación** de la **UNLP** (Universidad Nacional de La Plata).
+
 Cuatro consultas sobre grandes volúmenes de apuestas, resueltas con el modelo **MapReduce** usando el emulador `MRE` en Python (Google Colab).
 
 ## Datasets
